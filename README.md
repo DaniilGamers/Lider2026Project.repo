@@ -2,7 +2,9 @@
 
 # Rezerwacja sal projekt
 
-### Ten projekt jest dla całego pierwszego semestra.
+## Ten projekt jest dla całego pierwszego semestra.
+
+### Ta strona służy do rezerwacji pomieszczeń na wybrane dni. Użytkownik może dokonać rezerwacji, wskazując odpowiedni termin. Dostępny jest kalendarz, który pozwala sprawdzić, które pomieszczenia są wolne, a które już zarezerwowane. Aby uzyskać dostęp do funkcji rezerwacji i dokonać rezerwacji, użytkownik musi się zalogować.
 
 ## Lista rzeczy co będe w tym projekcie:
 
@@ -50,9 +52,9 @@
 
 # Room reservation project
 
-### This project is for the whole first semester.
+## This project is for the whole first semester.
 
-## This site is for reserving rooms for specific days and etc. User can reserve the room and put the date for reservation. User can check calendar to see which is available and which is already reserved
+### This site is for reserving rooms for specific days and etc. User can reserve the room and put the date for reservation. User can check calendar to see which is available and which is already reserved. User should login in order to access to reservations and make reservation.
 
 ## Lists of what things is going to be in this project:
 
