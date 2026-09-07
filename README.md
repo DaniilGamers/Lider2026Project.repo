@@ -1,6 +1,6 @@
 # Room reservation project
 
-This project is used for the whole first semester.
+This project is for the whole first semester.
 
 Lists of what things is going to be in this project:
 
@@ -14,8 +14,6 @@ Lists of what things is going to be in this project:
 
 - Edit/Remove reservations
 
-- Adding new room
-
 3. Calendar page
 
 - Reservation plans
@@ -25,5 +23,7 @@ Lists of what things is going to be in this project:
 4. Admin panel page
 
 - Create, Read, Update, Delete rooms
+
+- Adding new room
 
 - Reservation history
