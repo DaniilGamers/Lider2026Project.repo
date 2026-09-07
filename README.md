@@ -1,6 +1,6 @@
 # Room reservation project
 
-This project is for the whole first semester.
+### This project is for the whole first semester.
 
 Lists of what things is going to be in this project:
 
@@ -27,3 +27,17 @@ Lists of what things is going to be in this project:
 - Adding new room
 
 - Reservation history
+
+# How to test out the project for Website tester
+
+###To test out the project you need:
+
+##For Frontend client:
+
+1. Clone the project as copy
+
+2. Use npm start to launch up the front end website
+
+## For Backend server:
+
+1. Import MYSql file with name: "rezerwacja_sal" into MYSql server
