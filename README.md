@@ -2,7 +2,7 @@
 
 ### This project is for the whole first semester.
 
-Lists of what things is going to be in this project:
+## Lists of what things is going to be in this project:
 
 1. A login to room reservation website page
 
