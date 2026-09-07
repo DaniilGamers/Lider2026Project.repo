@@ -38,9 +38,9 @@
 
 2. Use command to launch up the front end website
 
-'''
+```
 npm start
-'''
+```
 
 ## For Backend server:
 
