@@ -52,6 +52,8 @@
 
 ### This project is for the whole first semester.
 
+## This site is for reserving rooms for specific days and etc. User can reserve the room and put the date for reservation. User can check calendar to see which is available and which is already reserved
+
 ## Lists of what things is going to be in this project:
 
 1. A login to room reservation website page
