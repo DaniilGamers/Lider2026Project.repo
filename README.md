@@ -4,7 +4,7 @@
 
 ## Ten projekt jest dla całego pierwszego semestra.
 
-### Ta strona służy do rezerwacji pomieszczeń na wybrane dni. Użytkownik może dokonać rezerwacji, wskazując odpowiedni termin. Dostępny jest kalendarz, który pozwala sprawdzić, które pomieszczenia są wolne, a które już zarezerwowane. Aby uzyskać dostęp do funkcji rezerwacji i dokonać rezerwacji, użytkownik musi się zalogować.
+### Ta strona służy do rezerwacji sal na wybrane dni. Użytkownik może dokonać rezerwacji, wskazując odpowiedni termin. Dostępny jest kalendarz, który pozwala sprawdzić, które sale są wolne, a które już zarezerwowane. Aby uzyskać dostęp do funkcji rezerwacji i dokonać rezerwacji, użytkownik musi się zalogować.
 
 ## Lista rzeczy co będe w tym projekcie:
 
