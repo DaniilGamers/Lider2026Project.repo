@@ -36,11 +36,7 @@
 
 1. Clone the project as copy
 
-2. Use command to launch up the front end website
-
-```
-npm start
-```
+2. Use `npm start` to launch up the front end website
 
 ## For Backend server:
 
