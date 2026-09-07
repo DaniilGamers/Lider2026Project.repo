@@ -30,9 +30,9 @@ Lists of what things is going to be in this project:
 
 # How to test out the project for Website tester
 
-###To test out the project you need:
+### To test out the project you need:
 
-##For Frontend client:
+## For Frontend client:
 
 1. Clone the project as copy
 
