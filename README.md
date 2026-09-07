@@ -1,4 +1,4 @@
-# Polish version
+# Wersja Polska
 
 # Rezerwacja sal projekt
 
