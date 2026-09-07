@@ -6,27 +6,27 @@
 
 1. A login to room reservation website page
 
-- A user login
+	- A user login
 
-- A administrator login
+	- A administrator login
 
 2. Room reservations list page
 
-- Edit/Remove reservations
+	- Edit/Remove reservations
 
 3. Calendar page
 
-- Reservation plans
+	- Reservation plans
 
-- reservation dates
+	- reservation dates
 
 4. Admin panel page
 
-- Create, Read, Update, Delete rooms
+	- Create, Read, Update, Delete rooms
 
-- Adding new room
+	- Adding new room
 
-- Reservation history
+	- Reservation history
 
 # How to test out the project for Website tester
 
