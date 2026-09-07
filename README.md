@@ -1,3 +1,53 @@
+# Polish version
+
+# Rezerwacja sal projekt
+
+### Ten projekt jest dla całego pierwszego semestra.
+
+## Lista rzeczy co będe w tym projekcie:
+
+1. Strona do logina
+
+	- Login użytkownika
+
+	- Login administratora
+
+2. Strona do lista rezerwacji sal
+
+	- Edit/Remove reservations Edytowanie/Usunięcie rezerwacji
+
+3. Strona do kalendarz
+
+	- Plany rezerwacji
+
+	- Terminy rezerwacji
+
+4. Strona do panela admina
+
+	- Stworzyć, Czytać, Aktualizować, Usunąć sali
+
+	- Dodać nowe sale
+
+	- Historii rezerwacji
+
+# Jak dla witryny testera, testować projekt
+
+### Żeby testować projekt, dlatego trzeba:
+
+## Dla Frontend kliencie:
+
+1. Klonuj projekt jako kopia
+
+2. Korzystuj `npm start` żeby uruchomić front end wytryne
+
+## Dla Backend serwera:
+
+1. Importuj plik MYSql z nazwe "rezerwacja_sal"
+
+
+
+# English version
+
 # Room reservation project
 
 ### This project is for the whole first semester.
