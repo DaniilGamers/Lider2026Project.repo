@@ -1,9 +1,15 @@
 import React from 'react';
+import css from './loginComponent.module.css'
 
 const LoginComponent = () => {
     return (
         <div>
-            <h1>Login page</h1>
+            
+            <div id={css.loginBox}>
+                <div>
+                    
+                </div>
+            </div>
 
         </div>
     );
