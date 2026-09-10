@@ -1,8 +1,37 @@
+#mainBox
+{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #loginBox
 {
 
     background: white;
-    width: 70%;
-    
+    width: 30%;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10%;
 
+}
+
+#formBox
+{
+    width: 50%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: orange;
+    font-size: 20px;
+}
+
+button
+{
+    font-size: 30px;
 }
