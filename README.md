@@ -8,6 +8,8 @@
 
 ## Lista rzeczy co będe w tym projekcie:
 
+![Plan_projekta](plan_projekta.png)
+
 1. Strona do logina
 
 	- Login użytkownika
@@ -57,6 +59,8 @@
 ### This site is for reserving rooms for specific days and etc. User can reserve the room and put the date for reservation. User can check calendar to see which is available and which is already reserved. User should login in order to access to reservations and make reservation.
 
 ## Lists of what things is going to be in this project:
+
+![Project_plan](plan_projekta.png)
 
 1. A login to room reservation website page
 
