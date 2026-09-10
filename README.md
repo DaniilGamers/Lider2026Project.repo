@@ -8,7 +8,7 @@
 
 ## Lista rzeczy co będe w tym projekcie:
 
-![Plan_projekta](plan_projekta.png)
+![Plan_projekta](/src/Images/plan_projekta.png)
 
 1. Strona do logina
 
@@ -60,7 +60,7 @@
 
 ## Lists of what things is going to be in this project:
 
-![Project_plan](plan_projekta.png)
+![Project_plan](/src/Images/plan_projekta.png)
 
 1. A login to room reservation website page
 
