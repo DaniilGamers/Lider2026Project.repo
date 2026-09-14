@@ -9,9 +9,9 @@ const LoginComponent = () => {
                 <div id={css.formBox}>
                     <form>
                        <label>Imie użytkownika: <br/> <input type="text" required/></label>
-                        <br/>
+
                        <label>Hasło: <br/> <input type="password" required/></label>
-                       <br/>
+
                        <label><button>Zaloguj się</button></label>
                     </form>
                 </div>

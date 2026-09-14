@@ -1,0 +1,39 @@
+#headerBox
+{
+    width: 100%;
+    background-color: rgb(182, 69, 17);
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+}
+
+#optionBox
+{
+    width: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.optionSelect
+{
+    background: white;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border-radius: 25px;
+    border-style: none;
+    transition: 0.2s;
+}
+
+a
+{
+    color: black;
+    text-decoration-line: none;
+}
+
+.optionSelect:hover
+{
+    scale: 90%;
+    transition: 0.2s;
+}
