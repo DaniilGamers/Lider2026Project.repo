@@ -1,0 +1,30 @@
+System obsługi rezerwacji
+
+1. Zrobić rezerwację
+
+Aktor główny: Użytkownik
+
+Cel: Zrobienie rezerwacji do wolny sala (np. rezerwacje to sali numer 007)
+
+Warunki wstępne
+
+    Użytkownik ma dostęp do systemu (strona www / aplikacja / terminal w lista rezerwacji)
+
+    Zalogowanie jest wymagane - zrobienie rezerwacji jest dostępne publicznie
+
+Warunki końcowe (sukces)
+
+    System dodaje rezerwacje do lista rezerwacji, wraz z informacją o rezerwacji
+
+Główny przebieg zdarzeń
+
+    1. Użytkownik dotyka przycisk z napisu: "Dodaj"
+    2. Uzytkownik dodaje informacje i wolny sala z lista wolnych sal (Nazwa, sala)
+    3. System waliduje informacje
+    4. System dodaje rezerwacje do bazy danych i robie sala którzy użytkownik wybierał, zajęty i usunięta z lista wolnych sal
+    5. Uzytkownik może zobaczyć aktualizowany list
+
+Przebiegi alternatywne
+
+    2a. Brak nazwy albo brak wybór sala - system poinformuje: "Nie jest zapisane informacje" i proponuje użytkowniku napisać coś i wybrać wolne sale
+    5a. Wiele lista - System proponuje paginację dla lista rezerwacji

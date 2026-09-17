@@ -7,10 +7,10 @@
     align-items: center;
 }
 
-#reservationsBox
+#adminBox
 {
-    width: 60%;
-    height: 75vh;
+    width: 35%;
+    height: 55vh;
     background: white;
     border-radius: 20px;
     display: flex;
@@ -19,36 +19,36 @@
     flex-direction: column;
 }
 
-#reservationsBox>h1
+#adminBox>h1
 {
     text-align: center;
-    padding: 10px;
+    padding-top: 20px;
 }
 
-#listReservationMainBox
+#adminMainBox
 {
     width: 90%;
-    height: 65vh;
+    height: 57vh;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
 
 }
 
-#listBox
+#roomListBox
 {
-    width: 65%;
-    height: 55vh;
+    width: 60%;
+    height: 40vh;
     overflow: auto;
     float: left;
     border: 1px solid black;
     border-radius: 10px;
 }
 
-#reservationEditBox
+#roomEditBox
 {
-    width: 25%;
-    height: 55vh;
+    width: 30%;
+    height: 40vh;
     float: left;
     border: 1px solid black;
     border-radius: 10px;
