@@ -27,4 +27,9 @@ Główny przebieg zdarzeń
 Przebiegi alternatywne
 
     2a. Brak nazwy albo brak wybór sala - system poinformuje: "Nie jest zapisane informacje" i proponuje użytkowniku napisać coś i wybrać wolne sale
-    5a. Wiele lista - System proponuje paginację dla lista rezerwacji
+    5a. Wiele lista - System proponuje paginację dla lista rezerwacji jeśli ma limit na wyświetlenia
+
+Powiązania z innymi przypadkami użycia
+
+    <<extend>> Edytowanie rezerwacje - Jeśli rezerwacje stworzona, to można edytować albo zmienić sale jeśli nie podoba się sala
+    <<extend>> Anulować rezerwacje - Jeśli rezerwacje jest stworzona, to można go anulować jeśli zmienił myślenie o rezerwacje
