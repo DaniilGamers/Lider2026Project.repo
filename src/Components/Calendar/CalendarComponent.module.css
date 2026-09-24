@@ -44,6 +44,15 @@
     float: left;
     border: 1px solid black;
     border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#monthNameBox
+{
+    width: 50%;
+    text-align: center;
 }
 
 #datesBox
@@ -53,4 +62,15 @@
     float: left;
     border: 1px solid black;
     border-radius: 10px;
+}
+
+#monthBox>button
+{
+    width: 10%;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+
 }
