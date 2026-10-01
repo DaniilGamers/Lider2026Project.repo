@@ -43,6 +43,36 @@
     float: left;
     border: 1px solid black;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: center;
+}
+
+.roomOptions
+{
+
+    background-color: rgb(182, 69, 17);
+    width: 70%;
+    color: white;
+    border-radius: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: normal;
+    transition: 0.3s;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.roomOptions:hover
+{
+
+    scale: 90%;
+    transition: 0.3s;
+
 }
 
 #roomNavBox
