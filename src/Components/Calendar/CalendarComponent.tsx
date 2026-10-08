@@ -5,14 +5,32 @@ const CalendarComponent = () => {
 
     const [currentDate, setCurrentDate] = useState(new Date());
 
+    const [daysInMonth, setDaysInMonth] = useState([]);
+
+    const [startDay, setStartDay] = useState(0)
+
     const monthNumber = currentDate.getMonth() + 1;
 
     let monthName = currentDate.toLocaleString("default", { month: "long" });
     monthName = monthName.charAt(0).toUpperCase() + monthName.slice(1);
 
     useEffect(() => {
-        ///console.log(monthNumber);
-    })
+        const year = currentDate.getFullYear();
+        const month = currentDate.getMonth();
+        const date = new Date(year, month, 1);
+        const days = [];
+        
+        while(date.getMonth() === month)
+            {
+                days.push(new Date(date));
+                date.setDate(date.getDate() + 1);
+            }
+        // @ts-ignore
+        setDaysInMonth(days);
+        setStartDay(new Date(year, month, 1).getDay());
+        
+
+    },[currentDate])
 
     function nextMonth() {
 
@@ -32,6 +50,8 @@ const CalendarComponent = () => {
         });
     }
 
+    const weekdays = ['Pon', 'Wt', 'Śr', 'Czw', 'Pt', 'Sob', 'Nied']
+
     return (
         <div id={css.mainBox}>
             <div id={css.calendarBox}>
@@ -48,7 +68,25 @@ const CalendarComponent = () => {
                         <button onClick={nextMonth}>{">"}</button>
                     </div>
 
-                    <div id={css.datesBox}></div>
+                    <div id={css.datesBox}>
+
+                        <div id={css.calendarWeekDaysBox}>
+                            {weekdays.map((day, i) => <div className={css.calendarWeekDaysTexts} key={i}>{day}</div>)}
+                        </div>
+
+                        <div id={css.daysBox}>
+                            
+                            {Array.from({ length: startDay }).map((_, index) => (<div className={css.emptyDays} key={index}></div>))}
+                            
+                            {daysInMonth.map((day) => <div className={css.daysEachBox} key={day}>{
+                            // @ts-ignore
+                            day.getDate()
+                            }</div>)}
+                        </div>
+
+                    </div>
+
+                        
 
                 </div>
             </div>

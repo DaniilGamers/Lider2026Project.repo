@@ -62,6 +62,7 @@
     float: left;
     border: 1px solid black;
     border-radius: 10px;
+    overflow: hidden;
 }
 
 #monthBox>button
@@ -72,5 +73,49 @@
     justify-content: center;
     align-items: center;
     border-radius: 100%;
+
+}
+
+#calendarWeekDaysBox
+{
+    width: 100%;
+    height: 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.calendarWeekDaysTexts
+{
+    width: 15%;
+    border: 1px solid black;
+    font-size: 15px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+#daysBox
+{
+    width: 100%;
+    height: 93%;
+    display: flex;
+    flex-wrap: wrap;
+    
+
+}
+
+.emptyDays, .daysEachBox
+{
+    width: 14.1%;
+    border: 1px solid black;
+    font-size: 15px;
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
 
 }
