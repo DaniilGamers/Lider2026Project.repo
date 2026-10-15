@@ -89,7 +89,7 @@
 .calendarWeekDaysTexts
 {
     width: 15%;
-    border: 1px solid black;
+    border: 0px solid black;
     font-size: 15px;
     height: 100%;
     display: flex;
@@ -113,7 +113,7 @@
     width: 14.1%;
     border: 1px solid black;
     font-size: 15px;
-    height: 20%;
+    height: 16.6%;
     display: flex;
     justify-content: center;
     border: 1px solid black;

@@ -9,6 +9,8 @@ const CalendarComponent = () => {
 
     const [startDay, setStartDay] = useState(0)
 
+    const [endDay, setEndDay] = useState(0)
+
     const monthNumber = currentDate.getMonth() + 1;
 
     let monthName = currentDate.toLocaleString("default", { month: "long" });
@@ -27,7 +29,8 @@ const CalendarComponent = () => {
             }
         // @ts-ignore
         setDaysInMonth(days);
-        setStartDay(new Date(year, month, 1).getDay());
+        setStartDay(new Date(year, month, 0).getDay());
+
         
 
     },[currentDate])
@@ -82,6 +85,8 @@ const CalendarComponent = () => {
                             // @ts-ignore
                             day.getDate()
                             }</div>)}
+
+                            {Array.from({ length: 18 }).map((_, index) => (<div className={css.emptyDays} key={index}></div>))}
                         </div>
 
                     </div>
