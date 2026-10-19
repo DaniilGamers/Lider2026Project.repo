@@ -22,7 +22,7 @@ const RoomReservationComponent = () => {
     )
 
     function formatDate(dateString: any) {
-    return new Date(dateString).toLocaleString("en-US", {
+    return new Date(dateString).toLocaleString("UTC", {
         year: "numeric",
         month: "long",
         day: "numeric",

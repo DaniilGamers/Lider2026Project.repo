@@ -4,5 +4,14 @@
     background-color: rgb(182, 69, 17);
     height: 10vh;
     display: flex;
-    justify-content: center;
+    justify-content: right;
+}
+
+#adminBtn
+{
+    margin: 10px;
+    width: 80px;
+    height: 80px;
+    background-color: limegreen;
+    border-radius: 30px;
 }

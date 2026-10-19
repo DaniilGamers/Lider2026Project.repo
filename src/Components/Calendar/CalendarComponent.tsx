@@ -9,9 +9,7 @@ const CalendarComponent = () => {
 
     const [startDay, setStartDay] = useState(0)
 
-    const [endDay, setEndDay] = useState(0)
-
-    const monthNumber = currentDate.getMonth() + 1;
+    const [reserveDate, setReserveDate] = useState([])
 
     let monthName = currentDate.toLocaleString("default", { month: "long" });
     monthName = monthName.charAt(0).toUpperCase() + monthName.slice(1);
@@ -30,6 +28,11 @@ const CalendarComponent = () => {
         // @ts-ignore
         setDaysInMonth(days);
         setStartDay(new Date(year, month, 0).getDay());
+
+         fetch('http://localhost:8000/rezerwacje')
+            .then(res => res.json())
+            .then(data => setReserveDate(data))
+            .catch(err => console.log(err));
 
         
 
@@ -84,7 +87,36 @@ const CalendarComponent = () => {
                             {daysInMonth.map((day) => <div className={css.daysEachBox} key={day}>{
                             // @ts-ignore
                             day.getDate()
-                            }</div>)}
+                            }
+                            <div>{reserveDate.map((res: any, i: number) => {
+                                if (!res.date) return null;
+                                
+                                const resDate = new Date(res.date);
+                                
+                                const isSameDay = 
+                                    // @ts-ignore
+                                    resDate.getUTCDate() === day.getDate() &&
+                                    // @ts-ignore
+                                    resDate.getUTCMonth() === day.getMonth() &&
+                                    // @ts-ignore
+                                    resDate.getUTCFullYear() === day.getFullYear();
+
+                                if (isSameDay) {
+                                    const formattedTime = resDate.toLocaleTimeString('UTC', {
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                        hour12: false
+                                    });
+                                    
+                                    return (
+                                        <div key={i} style={{display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center"}}>
+                                            {res.nazwa + " - "}
+                                            {formattedTime}
+                                        </div>
+                                    );
+                                }
+                                return null;
+                                })}</div></div>)}
 
                             {Array.from({ length: 18 }).map((_, index) => (<div className={css.emptyDays} key={index}></div>))}
                         </div>
