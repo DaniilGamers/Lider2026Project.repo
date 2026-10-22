@@ -12,9 +12,7 @@ const AddEditReservationComponent = () => {
 
     let optionId = 0;
 
-    useEffect(() => {
-        if
-    },[])
+    
     
     return (
         <div className={css.mainBox} onClick={() => closeMenu()}>
