@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import css from './roomReservationComponent.module.css'
+import cssAddEdit from './Add & Edit/AddEditComponent.module.css'
+import { useCreateMenu } from '../../Context/CreateMenuContext';
 
 const RoomReservationComponent = () => {
+
+    const { openMenu } = useCreateMenu()
 
     const [listData, setListData] = useState([])
 
@@ -50,8 +54,8 @@ const RoomReservationComponent = () => {
 
                         <div id={css.reservationOptionBox}>
 
-                            <button>Stworzyć</button>
-                            <button>Edytować</button>
+                            <button onClick={() => openMenu('addEditReserve')}>Stworzyć</button>
+                            <button onClick={() => openMenu('addEditReserve')}>Edytować</button>
                             <button>Anulować</button>
 
                         </div>

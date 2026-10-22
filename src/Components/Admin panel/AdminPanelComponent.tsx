@@ -1,7 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import css from './AdminPanelComponent.module.css'
+import { useCreateMenu } from '../../Context/CreateMenuContext';
+import { createGlobalState } from 'react-hooks-global-state';
 
 const AdminPanelComponent = () => {
+
+    const { setGlobalState, useGlobalState } = createGlobalState({
+        reserveBtnId: 0,
+        language: 'en'
+    })
+
+    const { openMenu } = useCreateMenu()
 
     const [sala, setSala] = useState([])
 
@@ -13,6 +22,12 @@ const AdminPanelComponent = () => {
                 .catch(err => console.log(err));
             }
         )
+
+        const menuOpener = (room_id: any) => {
+            setGlobalState("reserveBtnId", room_id);
+            openMenu('addUpdateRoom');
+            return
+        }
 
     return (
         <div id={css.mainBox}>
@@ -28,8 +43,8 @@ const AdminPanelComponent = () => {
 
                         <div id={css.roomOptionBox}>
 
-                            <button>Stworzyć</button>
-                            <button>Aktualizować</button>
+                            <button onClick={() => menuOpener(1)}>Stworzyć</button>
+                            <button onClick={() => menuOpener(2)}>Aktualizować</button>
                             <button>Usunąć</button>
 
 
