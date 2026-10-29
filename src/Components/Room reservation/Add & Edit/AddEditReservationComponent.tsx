@@ -6,11 +6,22 @@ const AddEditReservationComponent = () => {
 
     const { activeMenu, closeMenu } = useCreateMenu();
 
-    if (activeMenu !== 'addEditReserve') return null;
+    const {optionMenu} = useCreateMenu();
 
     let optionText = "";
 
-    let optionId = 0;
+    if (activeMenu !== 'addEditReserve') return null;
+
+    if(optionMenu === '1')
+        {
+            optionText = "Dodać";
+        }
+    else if(optionMenu === '2')
+        {
+            optionText = "Edytować";
+        }
+
+    
 
     
     
@@ -19,7 +30,15 @@ const AddEditReservationComponent = () => {
 
             <div id={css.reservationAddEditBox} onClick={(e) => e.stopPropagation()}>
 
-                <button></button>
+                <div id={css.inputMainBox}></div>
+
+                <div id={css.optionsBtnBox}>
+
+                    <button>{optionText}</button>
+
+                </div>
+
+                
 
             </div>
             

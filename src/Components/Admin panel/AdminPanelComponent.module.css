@@ -110,3 +110,8 @@
     border-style: solid;
     border-width: 1px;
 }
+
+.activeOption {
+    background-color: rgb(221, 85, 23); /* Синий цвет */
+    color: white;
+}

@@ -2,14 +2,19 @@ import React, { useEffect, useState } from 'react';
 import css from './roomReservationComponent.module.css'
 import cssAddEdit from './Add & Edit/AddEditComponent.module.css'
 import { useCreateMenu } from '../../Context/CreateMenuContext';
+import axios from 'axios';
 
 const RoomReservationComponent = () => {
 
     const { openMenu } = useCreateMenu()
 
+    const {optionId} = useCreateMenu()
+
     const [listData, setListData] = useState([])
 
     const [sala, setSala] = useState([])
+
+    const [selectedId, setSelectedId] = useState<number | null>(null);
 
     useEffect(() => {
        
@@ -22,7 +27,7 @@ const RoomReservationComponent = () => {
             .then(res => res.json())
             .then(data => setSala(data))
             .catch(err => console.log(err));
-        }
+        },[]
     )
 
     function formatDate(dateString: any) {
@@ -35,6 +40,35 @@ const RoomReservationComponent = () => {
         });
     }
 
+    const handleDeletion = async (e: React.MouseEvent) => {
+        e.preventDefault();
+
+        if (!selectedId) {
+            alert("Wybierz rezerwację do usunięcia!");
+            return;
+        }
+
+        try {
+            // Передаем ID переменной прямо в строке запроса через знак "?"
+            const response = await fetch(`http://localhost:8000/rezerwacje?select=${selectedId}`, {
+                method: 'DELETE'
+            });
+
+            const data = await response.json();
+            
+            if (data.status === "success") {
+                setListData(listData.filter((item: any) => item.id !== selectedId));
+                setSelectedId(null);
+                alert("Usunięto pomyślnie!");
+            } else {
+                alert("Błąd: " + data.message);
+            }
+        } catch (error) {
+            console.error("Ошибка запроса:", error);
+            alert("Błąd połączenia z serwerem");
+        }
+    };
+
 
 
 
@@ -45,18 +79,40 @@ const RoomReservationComponent = () => {
                 <div id={css.listReservationMainBox}>
                     <div id={css.listBox}>
 
-                        {listData.map((d: any, i) => 
-                            
-                            (<h4 key={i} className={css.listOptions}>{d.nazwa}, Pojemność: {d.pojemność}, sala: {sala.map((s: any, i) => d.rodzaj_id === s.id  && (s.rodzaj_sala))}, {formatDate(d.date)}</h4>))}
+                        {listData.map((d: any, i) => {
+                            const currentId = d.id;
+                            const isSelected = selectedId === currentId;
+
+                            return (
+                                <h4 
+                                    key={i} 
+                                    className={`${css.listOptions} ${isSelected ? css.activeOption : ''}`} 
+                                    onClick={() => {
+                                        setSelectedId(currentId);
+                                        console.log(currentId);
+                                    }}
+                                >
+                                    {d.nazwa}, Pojemność: {d.pojemność}, sala:{' '}
+                                    {sala.map((s: any) => d.rodzaj_id === s.id && s.rodzaj_sala)},{' '}
+                                    {formatDate(d.date)}
+                                </h4>
+                            );
+                        })}
 
                     </div>
                     <div id={css.reservationNavBox}>
 
                         <div id={css.reservationOptionBox}>
 
-                            <button onClick={() => openMenu('addEditReserve')}>Stworzyć</button>
-                            <button onClick={() => openMenu('addEditReserve')}>Edytować</button>
-                            <button>Anulować</button>
+                            <button onClick={() => {
+                                optionId('1'); 
+                                openMenu('addEditReserve')
+                                }}>Stworzyć</button>
+                            <button onClick={() => {
+                                optionId('2');
+                                openMenu('addEditReserve')
+                                }}>Edytować</button>
+                            <button onClick={handleDeletion}>Anulować</button>
 
                         </div>
 

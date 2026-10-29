@@ -2,14 +2,20 @@ import { createContext, useContext, useState } from 'react';
 
 type CreateMenuType = 'addEditReserve' | 'addUpdateRoom' | null;
 
+type createMenuOption = '1' | '2' | '3' | '4' | null;
+
 const CreateMenuContext = createContext<{
     activeMenu: CreateMenuType;
     openMenu: (type: CreateMenuType) => void;
     closeMenu: () => void;
+    optionMenu: createMenuOption;
+    optionId: (type: createMenuOption) => void;
 } | null>(null);
 
 export const CreateMenuProvider = ({ children }: { children: React.ReactNode }) => {
     const [activeMenu, setActiveMenu] = useState<CreateMenuType>(null);
+
+    const [optionMenu, setOptionMenu] = useState<createMenuOption>(null);
 
     return (
         <CreateMenuContext.Provider
@@ -17,6 +23,8 @@ export const CreateMenuProvider = ({ children }: { children: React.ReactNode }) 
                 activeMenu,
                 openMenu: (type) => setActiveMenu(type),
                 closeMenu: () => setActiveMenu(null),
+                optionMenu,
+                optionId: (type) => setOptionMenu(type)
             }}
         >
             {children}

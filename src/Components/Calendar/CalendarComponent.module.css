@@ -100,7 +100,7 @@
 
 #daysBox
 {
-    width: 100%;
+    width: 100.1%;
     height: 93%;
     display: flex;
     flex-wrap: wrap;
@@ -111,7 +111,6 @@
 .emptyDays, .daysEachBox
 {
     width: 14.1%;
-    border: 1px solid black;
     font-size: 15px;
     height: 16.6%;
     display: flex;
