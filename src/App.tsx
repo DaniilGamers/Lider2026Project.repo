@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import AdminPanelComponent from './Components/Admin panel/AdminPanelComponent';
 import { useNavigate } from 'react-router-dom';
 
 function App() {

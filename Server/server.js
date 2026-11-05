@@ -4,6 +4,7 @@ const cors = require('cors');
 
 const app = express();
 app.use(cors());
+app.use(express.json());
 
 const port = 8000;
 
@@ -34,8 +35,41 @@ app.get('/rezerwacje', (req, res) => {
   })
 })
 
+app.post('/rezerwacje', (req, res) => {
+  
+  const { nazwa, pojemnosc, rodzaj, data } = req.body;
+
+  
+  if (!nazwa || !pojemnosc || !rodzaj || !data) {
+    return res.status(400).json({ 
+      status: "error", 
+      message: "Wszystkie pola (nazwa, pojemnosc, rodzaj, data) są wymagane!" 
+    });
+  }
+
+  
+  const sql = "INSERT INTO rezerwacje (Imie_uzytkownika, nazwa, pojemność, rodzaj_id, date) VALUES (?, ?, ?, ?, ?)";
+  
+  const imieUzytkownika = "TestUser1";
+
+  
+  db.query(sql, [imieUzytkownika, nazwa, Number(pojemnosc), rodzaj, data], (err, result) => {
+    if (err) {
+      console.error("Błąd MySQL podczas dodawania:", err.message);
+      return res.status(500).json({ status: "error", message: err.message });
+    }
+    
+    
+    return res.json({ 
+      status: "success", 
+      message: "Added successfully", 
+      id: result.insertId 
+    });
+  });
+});
+
 app.delete('/rezerwacje', (req, res) => {
-  // Хватаем ID из query-параметров строки (переменная долетит со 100% гарантией)
+  
   const id = req.query.select; 
 
   if (!id) {
@@ -54,7 +88,7 @@ app.delete('/rezerwacje', (req, res) => {
 });
 
 app.delete('/sala', (req, res) => {
-  // Хватаем ID из query-параметров строки (переменная долетит со 100% гарантией)
+  
   const id = req.query.select; 
 
   if (!id) {

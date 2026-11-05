@@ -3,7 +3,7 @@ import React from 'react';
 import HeaderComponent from '../Components/Header/header';
 import FooterComponent from '../Components/Footer/footer';
 import { Outlet } from 'react-router-dom';
-import AddEditReservationComponent from '../Components/Room reservation/Add & Edit/AddEditReservationComponent';
+import AddEditReservationComponent from '../Components/Room reservation/Add-Edit/AddEditReservationComponent';
 import AddUpdateRoomComponent from '../Components/Admin panel/Add & Update/AddUpdateRoomComponent';
 import { CreateMenuProvider } from '../Context/CreateMenuContext';
 

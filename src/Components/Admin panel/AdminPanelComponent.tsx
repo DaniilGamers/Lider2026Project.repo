@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import css from './AdminPanelComponent.module.css'
 import { useCreateMenu } from '../../Context/CreateMenuContext';
-import { createGlobalState } from 'react-hooks-global-state';
 
 const AdminPanelComponent = () => {
 
@@ -33,7 +32,7 @@ const AdminPanelComponent = () => {
             }
     
             try {
-                // Передаем ID переменной прямо в строке запроса через знак "?"
+                
                 const response = await fetch(`http://localhost:8000/sala?select=${selectedId}`, {
                     method: 'DELETE'
                 });
@@ -43,7 +42,6 @@ const AdminPanelComponent = () => {
                 if (data.status === "success") {
                     setSalaData(salaData.filter((item: any) => item.id !== selectedId));
                     setSelectedId(null);
-                    alert("Usunięto pomyślnie!");
                 } else {
                     alert("Błąd: " + data.message);
                 }
