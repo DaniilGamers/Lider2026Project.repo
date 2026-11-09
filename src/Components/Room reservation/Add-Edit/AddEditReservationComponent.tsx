@@ -7,6 +7,8 @@ const AddEditReservationComponent = () => {
     const { activeMenu, closeMenu } = useCreateMenu();
 
     const {optionMenu} = useCreateMenu();
+
+    const {selectedIdEdit} = useCreateMenu()
     
     const [salaList, setSalaList] = useState([]);
 
@@ -31,7 +33,40 @@ const AddEditReservationComponent = () => {
                 }
             })
             .catch(err => console.log(err));
-    }, []
+
+        if(optionMenu === '1')
+            {
+                setNazwa('');
+                setPojemnosc('');
+                setRodzaj('');
+                setData('');
+            }
+
+        if(optionMenu === '2')
+            {
+                fetch(`http://localhost:8000/rezerwacjeEdit?select=${selectedIdEdit}`)
+                .then(res => res.json())
+                .then(data => {
+                    
+                    if (data && data.length > 0) {
+                        const reservation = data[0];
+                        
+                        
+                        setNazwa(reservation.nazwa);
+                        setPojemnosc(reservation.pojemnosc.toString());
+                        setRodzaj(reservation.rodzaj_id.toString());
+                        
+                        
+                        if (reservation.date) {
+                            const formattedDate = reservation.date.slice(0, 16).replace(' ', 'T');
+                            setData(formattedDate);
+                        }
+                    }
+                })
+                .catch(err => console.log("Błąd ładowния:", err))
+            
+            }
+    }, [optionMenu, selectedIdEdit]
 );
     const handleSubmit = () => {
     
@@ -51,35 +86,32 @@ const AddEditReservationComponent = () => {
         data: formattedDate
     };
 
-    
-    fetch('http://localhost:8000/rezerwacje', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(reservationData),
-    })
-    .then(res => {
+    if(optionMenu === '1'){
+        fetch('http://localhost:8000/rezerwacje', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(reservationData),
+        })
+        .then(res => {
         if (!res.ok) {
-            throw new Error('Błąd podczas dodawania rezerwacji przez serwera');
+            return res.json().then(errData => {
+                throw new Error(errData.message || 'Server Internal Error');
+            });
         }
         return res.json();
-    })
-    .then(result => {
-        console.log('Pomyślnie dodano:', result);
-        
-        
-        setNazwa("");
-        setPojemnosc("");
-        setData("");
-        
-        
-        closeMenu();
-    })
-    .catch(err => {
-        console.error('Send error accured:', err);
-        alert('Rezerwacje nie było stworzone');
-    });
+        })
+        .then(result => {
+            
+            setNazwa(""); setPojemnosc(""); setData(""); setRodzaj("0");
+            closeMenu();
+            window.location.reload();
+        })
+        .catch(err => {
+            alert(err.message); 
+        });
+    }
 };
 
     
@@ -129,7 +161,6 @@ const AddEditReservationComponent = () => {
                     onChange={(e: any) => setRodzaj(e.target.value)}
 
                     style={{width: "30%", height: "55px", borderRadius: "15px", borderWidth: "1px", textAlign: "center", fontSize: "15px"}}>
-                        <option value="0">Wybierz</option>
                         {salaList.map((s: any, i) => <option key={i} value={s.id}>{s.rodzaj_sala}</option>)}
                     </select>
 

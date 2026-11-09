@@ -10,6 +10,8 @@ const CreateMenuContext = createContext<{
     closeMenu: () => void;
     optionMenu: createMenuOption;
     optionId: (type: createMenuOption) => void;
+    selectedIdEdit: number | string | null;
+    setSelectedIdEdit: (id: any) => void;
 } | null>(null);
 
 export const CreateMenuProvider = ({ children }: { children: React.ReactNode }) => {
@@ -17,14 +19,23 @@ export const CreateMenuProvider = ({ children }: { children: React.ReactNode }) 
 
     const [optionMenu, setOptionMenu] = useState<createMenuOption>(null);
 
+    const [selectedIdEdit, setSelectedIdEdit] = useState<number | string | null>(null);
+
+    const closeMenu = () => {
+        setActiveMenu(null);
+        setOptionMenu(null);
+    };
+
     return (
         <CreateMenuContext.Provider
             value={{
                 activeMenu,
                 openMenu: (type) => setActiveMenu(type),
-                closeMenu: () => setActiveMenu(null),
+                closeMenu,
                 optionMenu,
-                optionId: (type) => setOptionMenu(type)
+                optionId: (type) => setOptionMenu(type),
+                selectedIdEdit,
+                setSelectedIdEdit: (id) => setSelectedIdEdit(id)
             }}
         >
             {children}

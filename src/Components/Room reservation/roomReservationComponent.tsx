@@ -8,6 +8,8 @@ const RoomReservationComponent = () => {
 
     const {optionId} = useCreateMenu()
 
+    const { setSelectedIdEdit } = useCreateMenu()
+
     const [listData, setListData] = useState([])
 
     const [sala, setSala] = useState([])
@@ -86,11 +88,12 @@ const RoomReservationComponent = () => {
                                     key={i} 
                                     className={`${css.listOptions} ${isSelected ? css.activeOption : ''}`} 
                                     onClick={() => {
+                                        setSelectedIdEdit(d.id)
                                         setSelectedId(currentId);
                                         console.log(currentId);
                                     }}
                                 >
-                                    {d.nazwa}, Pojemność: {d.pojemnosc}, sala:{' '}
+                                    {d.imie_uzytkownika}, {d.nazwa}, Pojemność: {d.pojemnosc}, sala:{' '}
                                     {sala.map((s: any) => d.rodzaj_id === s.id && s.rodzaj_sala)},{' '}
                                     {formatDate(d.date)}
                                 </h4>
