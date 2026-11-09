@@ -90,7 +90,7 @@ const RoomReservationComponent = () => {
                                         console.log(currentId);
                                     }}
                                 >
-                                    {d.nazwa}, Pojemność: {d.pojemność}, sala:{' '}
+                                    {d.nazwa}, Pojemność: {d.pojemnosc}, sala:{' '}
                                     {sala.map((s: any) => d.rodzaj_id === s.id && s.rodzaj_sala)},{' '}
                                     {formatDate(d.date)}
                                 </h4>

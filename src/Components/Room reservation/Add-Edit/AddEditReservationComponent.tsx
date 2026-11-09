@@ -61,7 +61,7 @@ const AddEditReservationComponent = () => {
     })
     .then(res => {
         if (!res.ok) {
-            throw new Error('Błąd podczas dodawania rezerwacji через сервер');
+            throw new Error('Błąd podczas dodawania rezerwacji przez serwera');
         }
         return res.json();
     })
@@ -77,8 +77,8 @@ const AddEditReservationComponent = () => {
         closeMenu();
     })
     .catch(err => {
-        console.error('Ошибка отправки формы:', err);
-        alert('Nie удалось сохранить резервацию. Проверьте консоль.');
+        console.error('Send error accured:', err);
+        alert('Rezerwacje nie było stworzone');
     });
 };
 
