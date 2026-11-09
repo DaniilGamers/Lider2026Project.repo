@@ -63,7 +63,7 @@ const AddEditReservationComponent = () => {
                         }
                     }
                 })
-                .catch(err => console.log("Błąd ładowния:", err))
+                .catch(err => console.log("Błąd ładowania:", err))
             
             }
     }, [optionMenu, selectedIdEdit]
