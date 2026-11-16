@@ -14,6 +14,8 @@ const RoomReservationComponent = () => {
 
     const [sala, setSala] = useState([])
 
+    const [historia, setHistoria] = useState([])
+
     const [selectedId, setSelectedId] = useState<number | null>(null);
 
     useEffect(() => {
@@ -27,6 +29,12 @@ const RoomReservationComponent = () => {
             .then(res => res.json())
             .then(data => setSala(data))
             .catch(err => console.log(err));
+
+            fetch('http://localhost:8000/historia')
+            .then(res => res.json())
+            .then(data => setHistoria(data))
+            .catch(err => console.log(err));
+
         },[]
     )
 
@@ -59,7 +67,7 @@ const RoomReservationComponent = () => {
             if (data.status === "success") {
                 setListData(listData.filter((item: any) => item.id !== selectedId));
                 setSelectedId(null);
-                alert("Usunięto pomyślnie!");
+                window.location.reload();
             } else {
                 alert("Błąd: " + data.message);
             }
@@ -88,7 +96,7 @@ const RoomReservationComponent = () => {
                                     key={i} 
                                     className={`${css.listOptions} ${isSelected ? css.activeOption : ''}`} 
                                     onClick={() => {
-                                        setSelectedIdEdit(d.id)
+                                        setSelectedIdEdit(d.id);
                                         setSelectedId(currentId);
                                         console.log(currentId);
                                     }}
@@ -118,6 +126,8 @@ const RoomReservationComponent = () => {
                         </div>
 
                         <div id={css.reservationHistoryBox}>
+
+                            {historia.map((h: any, i) => <h5 key={i}>{h.opis}</h5>)}
                             
                         </div>
 

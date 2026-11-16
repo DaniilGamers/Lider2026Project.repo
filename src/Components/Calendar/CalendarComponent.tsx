@@ -88,7 +88,7 @@ const CalendarComponent = () => {
                             // @ts-ignore
                             day.getDate()
                             }
-                            <div>{reserveDate.map((res: any, i: number) => {
+                            <div style={{overflow: "auto"}}>{reserveDate.map((res: any, i: number) => {
                                 if (!res.date) return null;
                                 
                                 const resDate = new Date(res.date);

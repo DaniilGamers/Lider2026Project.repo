@@ -8,9 +8,13 @@ const AdminPanelComponent = () => {
 
     const {optionId} = useCreateMenu()
 
+    const { setSelectedIdEdit } = useCreateMenu()
+
     const [sala, setSala] = useState([])
 
     const [salaData, setSalaData] = useState([])
+
+    const [historia, setHistoria] = useState([])
 
     const [selectedId, setSelectedId] = useState<number | null>(null);
 
@@ -19,6 +23,11 @@ const AdminPanelComponent = () => {
                 fetch('http://localhost:8000/sala')
                 .then(res => res.json())
                 .then(data => setSala(data))
+                .catch(err => console.log(err));
+
+                fetch('http://localhost:8000/historia')
+                .then(res => res.json())
+                .then(data => setHistoria(data))
                 .catch(err => console.log(err));
             }
         )
@@ -69,6 +78,7 @@ const AdminPanelComponent = () => {
                                 key={i} 
                                 className={`${css.roomOptions} ${isSelected ? css.activeOption : ''}`} 
                                 onClick={() => {
+                                    setSelectedIdEdit(s.id);
                                     setSelectedId(currentId);
                                     console.log(currentId);
                                 }}
@@ -98,6 +108,8 @@ const AdminPanelComponent = () => {
                         </div>
 
                         <div id={css.roomReservationHistoryBox}>
+
+                            {historia.map((h: any, i) => <h5 key={i}>{h.opis}</h5>)}
 
                         </div>
 

@@ -22,6 +22,8 @@ const AddEditReservationComponent = () => {
 
     const [data, setData] = useState("");
 
+    const minDateTimeUTC = new Date().toISOString().slice(0, 16);
+
     useEffect(() => {
         fetch('http://localhost:8000/sala')
             .then(res => res.json())
@@ -58,7 +60,7 @@ const AddEditReservationComponent = () => {
                         
                         
                         if (reservation.date) {
-                            const formattedDate = reservation.date.slice(0, 16).replace(' ', 'T');
+                            const formattedDate = new Date(new Date(reservation.date).getTime() - new Date(reservation.date).getTimezoneOffset() * 60000).toISOString().slice(0, 16);
                             setData(formattedDate);
                         }
                     }
@@ -89,6 +91,32 @@ const AddEditReservationComponent = () => {
     if(optionMenu === '1'){
         fetch('http://localhost:8000/rezerwacje', {
             method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(reservationData),
+        })
+        .then(res => {
+        if (!res.ok) {
+            return res.json().then(errData => {
+                throw new Error(errData.message || 'Server Internal Error');
+            });
+        }
+        return res.json();
+        })
+        .then(result => {
+            
+            setNazwa(""); setPojemnosc(""); setData(""); setRodzaj("0");
+            closeMenu();
+            window.location.reload();
+        })
+        .catch(err => {
+            alert(err.message); 
+        });
+    }
+    if(optionMenu === '2'){
+        fetch(`http://localhost:8000/rezerwacje?select=${selectedIdEdit}`, {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -168,7 +196,7 @@ const AddEditReservationComponent = () => {
 
                     <h3>Data</h3>
 
-                    <input type='datetime-local' value={data} onChange={(e) => setData(e.target.value)}  style={{width: "31%", borderRadius: "15px", borderWidth: "1px", height: "25px", fontSize: "15px"}} />
+                    <input type='datetime-local' min={minDateTimeUTC} value={data} onChange={(e) => setData(e.target.value)}  style={{width: "31%", borderRadius: "15px", borderWidth: "1px", height: "25px", fontSize: "15px"}} />
 
                 </div>
 

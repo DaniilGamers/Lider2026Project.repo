@@ -112,6 +112,7 @@ button:hover
     overflow: hidden;
     border-style: solid;
     border-width: 1px;
+    color: black;
 }
 
 .activeOption {
