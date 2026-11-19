@@ -5,6 +5,8 @@ import LoginComponent from "../Components/Login/loginComponent";
 import RoomReservationPage from "../Pages/RoomReservationPage";
 import CalendarPage from "../Pages/CalendarPage";
 import AdminPanelPage from "../Pages/AdminPanelPage";
+import RegisterComponent from "../Components/Register/RegisterComponent";
+import ResetPasswordComponent from "../Components/Reset-password/ResetPasswordComponent";
 
 const routes: RouteObject[] = [
     {
@@ -14,6 +16,8 @@ const routes: RouteObject[] = [
         children: [
             {index: true, element: <App />},
             {path: 'login', element: <LoginComponent/>},
+            {path: 'register', element: <RegisterComponent/>},
+            {path: 'password-reset', element: <ResetPasswordComponent/>},
             {path: '', element: <MainPage/>,
                 children: [
                     {path: '/list_rezerwacja', element: <RoomReservationPage/>},
