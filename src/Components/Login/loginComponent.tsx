@@ -12,9 +12,11 @@ const LoginComponent = () => {
                        <label>Imie użytkownika: <br/> <input type="text" required/></label>
 
                        <label>Hasło: <br/> <input type="password" required/></label>
-                       <Link to={'/password-reset'}><h6 style={{textAlign: "left", marginTop: -50, fontSize: "20px"}}>Resetuj hasło?</h6></Link>
+                       <Link to={'/password-reset'}><h6 style={{textAlign: "left", marginTop: -50, fontSize: "20px", color: "darkBlue"}}>Resetuj hasło?</h6></Link>
 
                        <label><button>Zaloguj się</button></label>
+
+                       <Link to={'/register'}><h6 style={{textAlign: "center", marginTop: -50, fontSize: "20px", color: "darkBlue"}}>- Stworzyć użytkownik -</h6></Link>
                     </form>
                 </div>
             </div>
