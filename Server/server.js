@@ -318,6 +318,67 @@ app.delete('/sala', (req, res) => {
   });
 });
 
+const crypto = require('crypto');
+
+app.post('/register', (req, res) => {
+  const { first_name, last_name, password, email } = req.body;
+
+  if (!first_name || !last_name || !password || !email) {
+    return res.status(400).json({ status: "error", message: "Wszystkie pola są wymagane!" });
+  }
+
+  const token = crypto.randomBytes(32).toString('hex');
+  const salt = "MyRandomSecretSalt99!";
+
+  const sql = "INSERT INTO uzytkownicy (first_name, last_name, email, password, is_superuser, token) VALUES (?, ?, ?, SHA2(CONCAT(?, ?), 256), 0, ?)";
+
+  const values = [first_name, last_name, email, password, salt, token];
+
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      if (err.code === 'ER_DUP_ENTRY') {
+        return res.status(400).json({ status: "error", message: "Ten email jest już zarejestrowany!" });
+      }
+      return res.status(500).json({ status: "error", message: err.message });
+    }
+    return res.json({ status: "success", message: "Zarejestrowano!", token });
+  });
+});
+
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ status: "error", message: "Podaj email i hasło!" });
+  }
+
+  const salt = "MyRandomSecretSalt99!";
+  const sql = "SELECT id, first_name, last_name, email, is_superuser FROM uzytkownicy WHERE email = ? AND password = SHA2(CONCAT(?, ?), 256)";
+
+  db.query(sql, [email, password, salt], (err, rows) => {
+    if (err) {
+      console.error("MySQL Login Error:", err);
+      return res.status(500).json({ status: "error", message: err.message });
+    }
+
+    if (rows.length === 0) {
+      return res.status(401).json({ status: "error", message: "Nieprawidłowy email lub hasło!" });
+    }
+
+    const user = rows[0];
+    const token = crypto.randomBytes(32).toString('hex');
+
+    db.query("UPDATE uzytkownicy SET token = ? WHERE id = ?", [token, user.id], (err2) => {
+      if (err2) {
+        console.error("Token Update Error:", err2);
+        return res.status(500).json({ status: "error", message: err2.message });
+      }
+
+      return res.json({ status: "success", token, user });
+    });
+  });
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
